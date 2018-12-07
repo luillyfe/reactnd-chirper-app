@@ -32,7 +32,6 @@ export const handleCreateTweet = tweet => {
     return saveTweet(tweet)
       .then(tweet => {
         dispatch(createTweet(tweet));
-        debugger;
       })
       .then(() => dispatch(hideLoading()))
       .catch(error => console.log(`there was an error, cod: ${error}`));

@@ -5,8 +5,7 @@ import { connect } from "react-redux";
 
 class TweetPage extends Component {
   render() {
-    const { id } = this.props.match;
-    const { replies } = this.props;
+    const { replies, id } = this.props;
     return (
       <div>
         <Tweet id={id} />
@@ -25,11 +24,12 @@ class TweetPage extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  const tweet = state.tweets[props.match.id];
+  const tweet = state.tweets[props.match.params.id];
   return {
     replies: tweet.replies.sort(
       (a, b) => state.tweets[b].timestamp - state.tweets[a].timestamp
-    )
+    ),
+    id: props.match.params.id
   };
 };
 
